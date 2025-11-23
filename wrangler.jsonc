@@ -2,6 +2,7 @@
   "name": "huitongqiao",
   "compatibility_date": "2025-11-23",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "serve_single_page_app": true  // 添加此行以支持单页应用
   }
 }

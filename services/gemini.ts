@@ -1,9 +1,6 @@
 import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
 import { ChatMessage } from "../types";
 
-// Initialize the client with the API Key from environment variables
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 const MODEL_NAME = "gemini-2.5-flash";
 
 const SYSTEM_INSTRUCTION = `
@@ -25,10 +22,23 @@ const SYSTEM_INSTRUCTION = `
 `;
 
 let chatSession: Chat | null = null;
+let ai: GoogleGenAI | null = null;
+
+const getAiClient = (): GoogleGenAI => {
+  if (!ai) {
+    const apiKey = process.env.API_KEY;
+    if (!apiKey) {
+      throw new Error("未找到 API 密钥。请检查您的环境变量设置。");
+    }
+    ai = new GoogleGenAI({ apiKey });
+  }
+  return ai;
+};
 
 export const getChatSession = (): Chat => {
   if (!chatSession) {
-    chatSession = ai.chats.create({
+    const client = getAiClient();
+    chatSession = client.chats.create({
       model: MODEL_NAME,
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
@@ -45,10 +55,13 @@ export const sendMessageToGemini = async (message: string): Promise<string> => {
     const result: GenerateContentResponse = await chat.sendMessage({
       message: message,
     });
-    
+
     return result.text || "抱歉，我暂时无法回答这个问题，请稍后再试。";
   } catch (error) {
-    console.error("Gemini API Error:", error);
+    console.error("Gemini API 错误:", error);
+    if (error instanceof Error && (error.message.includes("API Key not found") || error.message.includes("未找到 API 密钥"))) {
+      return "系统配置错误：未找到 API 密钥。请联系管理员配置 GEMINI_API_KEY。";
+    }
     return "连接历史数据库时出现错误，请检查您的网络或API密钥设置。";
   }
 };
