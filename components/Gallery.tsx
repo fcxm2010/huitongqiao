@@ -46,16 +46,14 @@ const Gallery: React.FC = () => {
                         <h3 className="text-3xl font-serif font-bold text-white mb-6 leading-tight">微短剧<br/>《滇缅公路》</h3>
                         <div className="w-12 h-1 bg-stone-700 mb-6"></div>
                         <p className="text-stone-400 leading-relaxed mb-8 text-sm text-justify">
-                            重现那段血泪交织的岁月。本剧以电影级的质感，还原了南洋机工、筑路民工以及守桥战士在滇缅公路上的英勇事迹。通过微短剧的形式，让历史不再是冰冷的文字，而是鲜活的影像。
-                            <br/><br/>
-                            <span className="italic text-stone-500">"每一公里路，都是一条命。"</span>
+                            剧情采用跨时空叙事，讲述高中生杨江在滇西旅游时，偶遇百岁筑路民夫老山爷，听闻 1938 年黑么儿、阿四等少年随家人投身滇缅公路修建，在饥饿、瘴气、塌方等生死考验中成长的往事，杨江意外坠江被二人救下，命运交织；现代杨江父母循着照片，在老山爷带领下重走滇缅公路，感受时代变迁，杨江平安归家后，老山爷在公路起点回望往昔，完成跨越八十载的告别。
                         </p>
-                        <button className="self-start group flex items-center gap-2 px-6 py-3 border border-stone-600 hover:border-red-800 hover:bg-red-900/20 text-stone-300 hover:text-red-500 transition-all duration-300">
+                        <a href="https://so.youku.com/search/q_%E6%BB%87%E7%BC%85%E5%85%AC%E8%B7%AF" target="_blank" rel="noopener noreferrer" className="self-start group flex items-center gap-2 px-6 py-3 border border-stone-600 hover:border-red-800 hover:bg-red-900/20 text-stone-300 hover:text-red-500 transition-all duration-300">
                             <span className="uppercase tracking-widest text-xs font-bold">观看全集</span>
                             <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -31,14 +31,20 @@ const Header: React.FC<HeaderProps> = ({ currentView, onChangeView }) => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div 
-            className="flex-shrink-0 flex flex-col justify-center cursor-pointer"
+            className="flex-shrink-0 flex items-center cursor-pointer opacity-70"
             onClick={() => onChangeView(ViewState.HOME)}
           >
             <div className="flex items-center">
-               <div className="w-1 h-8 bg-red-900 mr-3"></div>
-               <span className="text-2xl font-serif font-bold tracking-widest text-stone-100">惠通桥</span>
+              <img 
+                src="https://photo.7zi.top/dmgl/%E6%83%A0%E9%80%9A%E6%A1%A5%20png-500.png" 
+                alt="惠通桥纪念馆" 
+                className="h-10 w-auto mr-3 filter invert"
+              />
+              <div className="flex flex-col">
+                <span className="text-2xl font-serif font-bold tracking-widest text-stone-100">惠通桥</span>
+                <span className="text-[10px] uppercase tracking-[0.3em] text-stone-500">Huitong Bridge Memorial</span>
+              </div>
             </div>
-            <span className="ml-4 text-[10px] uppercase tracking-[0.3em] text-stone-500">Huitong Bridge Memorial</span>
           </div>
 
           {/* Desktop Nav */}
